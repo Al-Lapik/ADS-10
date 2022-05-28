@@ -12,18 +12,6 @@ class Tree {
   };
   Node* root;
 
-  std::vector<std::string> prm;
-  void permutation(Node* root, std::string symb = "") {
-    if (!root->leaf.size()) {
-      symb += root->value;
-      prm.push_back(symb);
-    }
-    if (root->value != '*')
-      symb += root->value;
-    for (size_t i = 0; i < root->leaf.size(); i++)
-      permutation(root->leaf[i], symb);
-	}
-
   void buildTree(Node* root, std::vector<char> cycle) {
     if (!cycle.size())
       return;
@@ -41,6 +29,18 @@ class Tree {
     for (size_t i = 0; i < root->leaf.size(); i++)
       buildTree(root->leaf[i], cycle);
   }
+
+  std::vector<std::string> prm;
+  void permutation(Node* root, std::string symb = "") {
+    if (!root->leaf.size()) {
+      symb += root->value;
+      prm.push_back(symb);
+    }
+    if (root->value != '*')
+      symb += root->value;
+    for (size_t i = 0; i < root->leaf.size(); i++)
+      permutation(root->leaf[i], symb);
+	}
 
  public:
     std::string operator[](int i) const {
