@@ -40,7 +40,7 @@ class Tree {
       symb += root->value;
     for (size_t i = 0; i < root->leaf.size(); i++)
       permutation(root->leaf[i], symb);
-	}
+  }
 
  public:
     std::string operator[](int i) const {
